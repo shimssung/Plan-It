@@ -1,0 +1,126 @@
+@use '../theme' as theme;
+@use './common' as common;
+
+
+  .eventview {
+    flex-basis: 100%; // 화면 반절을 차지
+    height: 50vh;
+    overflow-y: auto; // 세로길이가 100vh를 넘어갈 경우 스크롤 생성
+    padding: 10px 50px;
+    background-color: theme.$dark-background;
+    box-sizing: border-box;
+    transition: transform 0.5s ease; // 트랜지션 속성을 구체적으로 설정
+    transform: translateY(-100%); // 처음에 화면 밖에 위치
+  
+    // 슬라이드 애니메이션을 위한 keyframe 정의
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    &.active {
+      animation: slideIn 0.8s forwards; // 이벤트뷰가 활성화될 때 애니메이션
+    }
+
+    
+    // EventView header부분
+    .header {
+      @include common.size(100%, 7%);
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+
+  
+      .col-start {
+        width: 110px;
+        @include common.flex-column(center, flex-start);
+        padding-bottom: 2%;
+        
+        .text {
+          width: 110px;
+          font-size: 80%;
+        }
+  
+        .text-month {
+          margin-right: 5px;
+          font-size: 300%;
+          font-weight: 600;
+          color: theme.$white;
+        }
+  
+        .text-year {
+          color: theme.$white;
+        }
+
+      }
+
+      .col-end {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .eventViewXbtn{
+          width: 45px;
+          height: 45px;
+        }
+      }
+    }
+  
+    .eventtext {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+  
+      .event-text {
+        color: white;
+        margin-right: 5px;
+
+      }
+    }
+
+  
+    .TodoListcontainer {
+      display: flex;
+      justify-content: center;
+
+      .Todotitle {
+        height: 60px;
+        width: 43vw;
+      }
+
+      .deleteTodo{
+        width: 0;  // 처음에 크기를 0으로 설정
+        height: 0;
+        margin-left: 10px;
+        display: none;    // 처음엔 DOM에서 보이지 않게 설정
+
+
+      }
+  
+      .eventlabelpoint {
+        border: none;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+        height: 50px;
+        width: 5px;
+      }
+
+      &:hover{
+        .deleteTodo {
+          width: 3vw;       // 최종 크기
+          height: 60px;     // 최종 크기
+          margin-left: 10px;
+          display: block;    // hover 시에 버튼을 보이게 설정
+        }
+
+        .Todotitle {
+          width: 39vw;
+        }
+      }
+    }
+  }

@@ -1,0 +1,274 @@
+@use '../theme' as theme;
+@use './common' as common;
+
+.container {
+  display: flex;
+  flex-direction: row; // 가로로 배치 eventView 옆으로 보여주기 위해
+  width: 100vw;
+  height: 100vh; // 세로 높이를 화면 전체로 설정
+  justify-content: center;
+  background-color: theme.$dark-background; // 다크 모드 배경 색상
+
+  .calendar {
+    transition: all 0.5s ease; // 크기 전환 애니메이션
+    background-color: theme.$dark-background; // 다크 모드 배경 색상
+    color: theme.$white; // 기본 텍스트 색상
+    padding: 30px;
+    
+    @include common.size(100%, 100%); // 처음에는 화면 전체를 차지
+
+
+    .header {
+      @include common.size(100%, 7%);
+      display: flex;
+      justify-content: center;
+      align-items: first baseline;
+      margin-bottom: 3%;
+
+          .text {
+            font-size: 0.8em;
+            margin-left: 50px;
+          }
+
+          .text-month {
+            margin-right: 50px;
+            font-size: 3em;
+            font-weight: 600;
+            color: theme.$white; // 현재 달의 글자 색을 흰색으로 변경
+          }
+
+          .button {
+            @include common.size(5%, fit-content);
+            border: none;
+            background: none;
+            font-size: 1.8em;
+            color: transparentize(theme.$gray-color, 0.2);
+
+            &:hover {
+              @include common.hover-event();
+              transform: scale(1.15);
+              color: theme.$white;
+            }
+          }
+    }
+
+    // 요일
+    .days {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 5vw;
+      margin-right: 5vw;
+      font-weight: 800;
+      font-size: 0.9em;
+      margin-bottom: 2%;
+      color: theme.$white;
+
+      &.showEventViewdays {
+        margin-left: 1vw;
+        margin-right: 1vw;
+      }
+
+      .col {
+        @include common.size(12.9%, 100%);
+        @include common.flex-column(center, center);
+        background: theme.$dark-background;
+        &:nth-child(1),
+        &:nth-child(7) {
+          color: theme.$orange-color;
+        }
+
+        &:nth-child(4),
+        &:nth-child(5) {
+          padding-right: 10px
+        }
+        &:nth-child(6),
+        &:nth-child(7) {
+          padding-right: 20px
+        }
+      }
+    }
+    
+    // 날짜 셀
+    .body {
+      @include common.size(100%, 82%);
+      @include common.flex-column();
+      background-color: theme.$dark-background;
+
+      .eventmodal {
+        background-color: white !important;
+        border-radius: 10px;
+        padding: 20px;
+        padding-bottom: 0px;
+        height: 180px;
+        overflow: auto;
+        width: 240px;
+        border: 1px solid black;
+
+        .modalContent {
+          color: black;
+          
+        }
+      }
+
+      .row {
+        @include common.size(100%, 20%);
+        display: flex;
+        justify-content: center;
+
+        .col {
+          @include common.size(13.5%, 93%);
+          @include common.flex-column(center, center);
+          border-radius: 3px;
+          font-size: 1em;
+          background-color: theme.$dark-background;
+          margin-right: 11px;
+
+          &:nth-child(1),
+          &:nth-child(7) {
+            color: theme.$orange-color;
+          }
+
+          .not-valid {
+            color: theme.$gray-color;
+          }
+
+          img {
+            opacity: 0.1;
+          }
+        }
+
+        .cell {
+          @include common.flex-column(center, center);
+          @include common.size(12%, 93%);
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          border-radius: 10px;
+          border: 0.4px solid transparentize(gray, 0.6);
+
+          // 현재 월에 속하지 않는 셀들은 클릭 시 이벤트 발생 하지않음 
+          &.disabled {
+            pointer-events: none;
+          }
+
+          &.nowday {
+            background: transparentize(theme.$gray-color, 0.5);
+            border-radius: 10px;
+
+
+            &:hover {
+              @include common.hover-event();
+              @include common.shadow(1.5px, theme.$dark-gray-color, 0.1);
+              transform: scale(1.01);
+              border: none;
+              background: transparentize(theme.$gray-color, 0.5);
+              border-radius: 10px;
+            }
+          }
+
+          &.valid {
+            &:hover {
+              @include common.hover-event();
+              @include common.shadow(1.5px, theme.$dark-gray-color, 0.1);
+              transform: scale(1.01);
+              border: none;
+              background: transparentize(theme.$gray-color, 0.5);
+              border-radius: 10px;
+            }
+          }
+
+          &.selected {
+            @include common.shadow(1.5px, theme.$main-color, 0.1);
+            transform: scale(1.02);
+            background: theme.$sub-color;
+            color: theme.$main-color;
+            font-weight: 600;
+            border-radius: 10px;
+
+            &:hover {
+              @include common.hover-event();
+              transform: scale(1.01);
+              border: none;
+              border-radius: 10px;
+            }
+          }
+
+          &.weekend {
+            color: theme.$orange-color;
+          }
+
+          .eventsContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 80px;
+
+            
+            .eventcontent {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+
+                .morebtn{
+                  height: 15px;
+                  width: 10vw;
+                  font-size: 10px;
+                  text-align: left;
+                  padding: 0;
+                  margin-top: 2px;
+                  text-align: center;
+
+                  &.selectedBtn {
+                    font-weight: bold;
+                    border-width: 1px;
+                    
+                  }        
+
+                  &.showEventViewBtn {
+                    width: 5vw;
+                  }
+                }
+                
+            }
+
+            // 라벨 색
+            .eventpoint {
+              border: none;
+              border-radius: 10px;
+              margin-left: 3px;
+              height: 12px;
+              width: 5px;
+            }
+
+            
+            // 각 날에 맞는 이벤트 버튼들 (제목)
+            .eventcellBtn {
+              display: flex;
+              align-items: center;
+              height: 20px;
+              width: 9vw;
+              font-size: 13px;
+              padding: 0;
+              color: white;
+              white-space: nowrap;  // 텍스트가 줄 바꿈되지 않도록
+              overflow: hidden;     // 요소의 내용이 너비를 넘어가면 넘치는부분을 숨김
+
+              &.selectedBtn {
+                color: black;
+                font-weight: bold;
+              }
+
+              &.showEventViewBtn {
+                width: 4vw;
+              }
+              
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
