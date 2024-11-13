@@ -4,6 +4,6 @@
 
 ![Your Image](https://github.com/shimssung/Plan-It-Front/blob/main/public/1726711735115_6573.jpg)
 <img src="/images/1726711735115_6573.jpg" width="300"/>
-
+![1726711735115_6573](https://github.com/user-attachments/assets/cb27ba71-9db1-4f21-8000-1f2f70c458b5)
 Plan-It-Back(https://github.com/shimssung/Plan-It-Back)
 
