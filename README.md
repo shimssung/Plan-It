@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring-Boot&logoColor=white"/> <img src="https://img.shields.io/badge/MyBatis-EF2D5E?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4gPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNGRjAzMDgiIC8+IDx0ZXh0IHg9IjE1IiB5PSI2NSIgc3R5bGU9ImZpbGw6IHdoaXRlOyBmb250LXNpemU6NDBweDsgZm9udC1mYW1pbHk6QXJpYWwsIHNhbnMtc2VyaWYiPiBNQkkgPC90ZXh0Pjwvc3ZnPg==&logoColor=white"/>
 
 ![Your Image](https://github.com/shimssung/Plan-It-Front/blob/main/public/1726711735115_6573.jpg)
-<img src="/images/1726711735115_6573.jpg" width="300"/>
-![1726711735115_6573](https://github.com/user-attachments/assets/cb27ba71-9db1-4f21-8000-1f2f70c458b5)
+<img src="https://github.com/shimssung/Plan-It-Front/blob/main/public/1726711735115_6573.jpg" width="300"/>
+
 Plan-It-Back(https://github.com/shimssung/Plan-It-Back)
 
