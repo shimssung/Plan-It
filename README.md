@@ -4,6 +4,12 @@
 
 <img src="https://github.com/shimssung/Plan-It-Front/blob/main/public/Plan_It_page.png" width="1000" />
 
+# Description
+
+## 프로젝트 명 : Plan_It
+- 
+
+
 
 
 
