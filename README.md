@@ -8,7 +8,6 @@
 
 프로젝트 명 : Plan_It!
  - 공휴일 API를 통해 쉬는 날 확인 가능하다.
- - KakaoMap으로 위치 저장이 가능하다.
  - 이벤트별로 색을 지정해 분류가 가능하다.
 <br><br>
 
@@ -28,6 +27,7 @@ FrontEnd
 
 BackEnd
  - Spring Boot 3.0x
+ - MyBatis
  - MySQL
 
    
